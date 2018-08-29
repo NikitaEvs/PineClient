@@ -1,0 +1,3 @@
+/home/hutu/client/CMakeFiles/rebuild_cache.dir
+/home/hutu/client/CMakeFiles/edit_cache.dir
+/home/hutu/client/CMakeFiles/client.dir
