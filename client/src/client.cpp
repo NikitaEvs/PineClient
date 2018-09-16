@@ -27,7 +27,7 @@ websocketpp::connection_hdl handlerCurrent;
 
 using json = nlohmann::json;
 
-const std::string uri = "ws://192.168.1.102:8080";
+const std::string uri = "ws://51.15.97.72:8080";
 const int token = 1;
 bool onSending = true;
 
@@ -115,18 +115,22 @@ std::string serializeData(std::string data, int token) {
 }
 
 void sendPkg() {
+	std::cout << "Start create pkg" << std::endl;
 	std::string out="";
 	std::stringstream ss;
 	int inChr, count = 0;
-	if((inChr = serialOpen("/dev/ttyACM0", 9600)) < 0){
+	if((inChr = serialOpen("/dev/ttyUSB0", 9600)) < 0){
 	}
 	count = 0;
 	double s = 0;
 	while(count < 2049) {
 	        char in = serialGetchar(inChr);
+		std::cout << "Give char: " << in << std::endl;
    		if(in == '\n') {
 			if(count != 0) {
-				double x = std::stod(uartIn);
+				std::cout << "Receive from serial" << std::endl;
+				double x = std::stoi(uartIn)/1000.0;
+				std::cout << x << std::endl;
 				AVal[count - 1] = x;
 				s = s + x * x;
 			}
@@ -147,6 +151,8 @@ void sendPkg() {
 		d.push_back(m);
 	}
 	d.push_back(sqrt(s/2048));
+	std::string hat = "1,2,3,4,5,6,7,8,9,10,11,12";
+	ss << hat << std::endl;
 	for(int i = 0 ; i < d.size();++i) {
 		ss << d[i] << ',';
 	}

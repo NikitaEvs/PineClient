@@ -1,1 +1,0 @@
-/usr/bin/c++   -lboost_system -Wno-psabi -pthread -lboost_filesystem -lboost_thread -ldl -lwiringPi -lrt -lm -lcrypt -std=c++0x    -lboost_system -Wno-psabi -pthread -lboost_filesystem -lboost_thread -ldl -lwiringPi -lrt -lm -lcrypt   CMakeFiles/client.dir/src/client.cpp.o  -o client -rdynamic -ldl -lwiringPi -lcrypt -lboost_system -lrt 
